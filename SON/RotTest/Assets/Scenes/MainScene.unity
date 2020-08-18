@@ -965,6 +965,7 @@ MonoBehaviour:
   gravityOn: 0
   deadCheck: 0
   turnCheck: 0
+  movingCheck: 0
   playerTr: {fileID: 767223556}
   rotSpeed: 5
   camera: {fileID: 963194227}

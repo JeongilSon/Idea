@@ -7,18 +7,27 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] public int playerHp = 5;
+
+    //카메라 및 캐릭터 이동관련
     [SerializeField] float cameraRotSpeed = 150f;
-    [SerializeField] float moveDIrection = 2;
+    [SerializeField] float moveDIrection = 1;
     [SerializeField] float cameraMaxRot = 80;
+    float turnValue;
+    float moveValue;
+    //논리값
     [SerializeField] bool gravityOn;
     [SerializeField] bool deadCheck;
     [SerializeField] bool turnCheck;
+    [SerializeField] bool movingCheck;
+    //그외
     [SerializeField] Transform playerTr;
     [SerializeField] float rotSpeed = 5f;
     //[SerializeField] Enemy enemy;
     float xC;
     float yC;
     float turnningCount = 0;
+    float movingCount = 0;
+    //필요 컴포넌트
     [SerializeField] Camera camera;
     public GameObject rightArmLight;
     public GameObject leftArmLight;
@@ -55,16 +64,31 @@ public class PlayerController : MonoBehaviour
         //    rb.MovePosition(transform.position + velocity * Time.deltaTime);
         //}
         #endregion
-        if(Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) && movingCheck == false)
         {
-            transform.Translate(Vector3.forward * moveDIrection);
+            moveValue = 1;
+            StartCoroutine(TriggerMoving());
+            
         }
-        else if(Input.GetKeyDown(KeyCode.S))
+        else if(Input.GetKeyDown(KeyCode.S) && movingCheck == false)
         {
-            transform.Translate(Vector3.back * moveDIrection);
+            moveValue = -1;
+            StartCoroutine(TriggerMoving());
         }
     }
-
+    IEnumerator TriggerMoving()
+    {
+        movingCheck = true;
+        movingCount = 0.1f;
+        Vector3 moveDevelop = moveValue > 0 ? Vector3.forward : Vector3.back;
+        while (movingCount < moveDIrection)
+        {
+            transform.Translate(moveDevelop * movingCount * Time.deltaTime);
+            movingCount += 0.1f;
+            yield return null;
+        }
+        movingCheck = false;
+    }
     void Jump()
     {
         if(Input.GetButtonDown("Jump") && gravityOn == false && deadCheck == false)
@@ -76,14 +100,14 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            turnCheck = false;
+            turnValue = 1;
             rightArmLight.SetActive(true);
             //rb.useGravity = false;
             //rb.velocity = transform.up * 1.5f;
             //enemy.transform.Translate(enemy.transform.up * 1.5f);
             //ground.transform.Rotate(Vector3.forward * 90 * Time.deltaTime);    
             if(turnCheck == false)
-            StartCoroutine(MapTurnning());
+                StartCoroutine(MapTurnning());
             //ground.transform.Rotate(0, 0, gameObject.transform.position.z * 30 * Time.deltaTime);            
             //gravityOn = true;
         }
@@ -96,10 +120,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             leftArmLight.SetActive(true);
+            turnValue = -1;
             //rb.useGravity = false;
             //rb.velocity = transform.up * 1.5f;
             //enemy.transform.Translate(enemy.transform.up * 1.5f);
-            ground.transform.Rotate(Vector3.back * 90);
+            if (turnCheck == false)
+                StartCoroutine(MapTurnning());
             //ground.transform.Rotate(0, 0, gameObject.transform.position.z * -30 * Time.deltaTime);
             //gravityOn = true;
         }
@@ -147,19 +173,22 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator MapTurnning()
     {
+        turnCheck = true;
         turnningCount = 0;
         float value = Mathf.Lerp(0, 90f, Time.deltaTime);
+        Vector3 turnDevelop = turnValue > 0 ? Vector3.forward : Vector3.back;
         while (turnningCount < 90)
         {
-            ground.transform.RotateAround(playerTr.transform.position, Vector3.forward, value);
+            ground.transform.RotateAround(gameObject.transform.position, turnDevelop, value);
             turnningCount += value;
+            if (ground.transform.rotation.z % 90 == 0)
+            {
+                break;
+            }
             yield return null;
         }
-        if(ground.transform.rotation.z % 90 != 0)
-        {
 
-        }
-        turnCheck = true;
+        turnCheck = false;
     }
     void PlayerRot()
     {
