@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Ground
   - Bullet
+  - Goal
+  - Cam
   layers:
   - Default
   - TransparentFX
