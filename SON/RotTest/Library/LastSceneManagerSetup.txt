@@ -1,6 +1,5 @@
 sceneSetups:
-- path: Assets/Hovl Studio/AAA Projectiles Vol 2/Demo scene/Demo projectiles Vol
-    2.unity
+- path: Assets/Scenes/TextScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
