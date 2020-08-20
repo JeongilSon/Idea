@@ -8,6 +8,10 @@ TagManager:
   - Enemy
   - Ground
   - Bullet
+  - Goal
+  - Cam
+  - CGroundObject
+  - ClearGround
   layers:
   - Default
   - TransparentFX
@@ -19,7 +23,7 @@ TagManager:
   - 
   - Enemy
   - Player
-  - 
+  - ClearGround
   - 
   - 
   - 

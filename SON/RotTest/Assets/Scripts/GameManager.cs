@@ -9,8 +9,10 @@ public class GameManager : MonoBehaviour
 {
 	public static GameManager instance;
     public Text txt;
-	public GameObject onGameButton;
 	public GameObject clearStageUI;
+	public AudioClip firstBgmSource, secondBgmSource;
+	public AudioClip keyboardSource;
+	public int stageCount = 0;
 	string story = "";
 	private void Awake()
 	{
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour
 	}
 	void Start()
 	{
+		SoundManager.instance.BgmSingle(firstBgmSource);
 		txt = txt.GetComponent<Text>();
 		story = txt.text;
 		txt.text = "";
@@ -37,27 +40,31 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator PlayText()
 	{
-
+		SoundManager.instance.KeyboardSingle(keyboardSource);
 		foreach (char c in story)
-		{
+		{		
 			txt.text += c;
-			yield return new WaitForSeconds(0.125f);
+			yield return new WaitForSeconds(0.13f);
 		}
-		onGameButton.SetActive(true);
-
-	}
-
-	public void OnGameStartButton()
-	{
-		SceneManager.LoadScene(1);
+		SoundManager.instance.KeyboardSingle(null);
 	}
 	public void StageClear()
     {
+		if(Input.GetMouseButtonDown(0))
+        {
+			if (stageCount == 0)
+			{
+				++stageCount;
+				SceneManager.LoadScene(stageCount);
+				SoundManager.instance.KeyboardSingle(null);
+			}
+        }
 		if(PlayerController.clearCheck == true)
         {
 			PlayerController.roundCount++;
 			clearStageUI.SetActive(true);
         }		
+		
     }
 	public void NextStageButton()
     {
