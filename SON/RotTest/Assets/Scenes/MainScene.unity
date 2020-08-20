@@ -27266,6 +27266,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5315205737893499632}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.25, y: 0.25, z: -0.75}
@@ -27276,6 +27277,30 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5315205738721536244
 MonoBehaviour:
+=======
+  m_GameObject: {fileID: 767223550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 633707c9c9db9cb46bd7af397aef6fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHp: 5
+  cameraRotSpeed: 5
+  moveDIrection: 5
+  cameraMaxRot: 80
+  gravityOn: 0
+  deadCheck: 0
+  turnCheck: 0
+  movingCheck: 0
+  playerTr: {fileID: 767223556}
+  rotSpeed: 5
+  camera: {fileID: 963194227}
+  rightArmLight: {fileID: 1961418852}
+  leftArmLight: {fileID: 1456008361}
+  ground: {fileID: 2042500628}
+--- !u!136 &767223553
+CapsuleCollider:
+>>>>>>> e36daf3a49948442707dca65309dd12e2dfa8b69
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}

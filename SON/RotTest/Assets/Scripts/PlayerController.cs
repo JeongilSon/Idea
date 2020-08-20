@@ -10,18 +10,31 @@ using UnityEngineInternal.XR.WSA;
 
 public class PlayerController : MonoBehaviour
 {
+<<<<<<< HEAD
     [SerializeField] public static int roundCount = 1;
   
     //카메라 및 캐릭터 이동관련
     [SerializeField] float cameraRotSpeed = 150f;
     [SerializeField] float moveDIrection = 10f;
+=======
+    [SerializeField] public int playerHp = 5;
+
+    //카메라 및 캐릭터 이동관련
+    [SerializeField] float cameraRotSpeed = 150f;
+    [SerializeField] float moveDIrection = 1;
+>>>>>>> e36daf3a49948442707dca65309dd12e2dfa8b69
     [SerializeField] float cameraMaxRot = 80;
     float turnValue;
     float moveValue;
     //논리값
+<<<<<<< HEAD
     [SerializeField] public static bool clearCheck = false;
     //[SerializeField] bool gravityOn;
     //[SerializeField] bool deadCheck;
+=======
+    [SerializeField] bool gravityOn;
+    [SerializeField] bool deadCheck;
+>>>>>>> e36daf3a49948442707dca65309dd12e2dfa8b69
     [SerializeField] bool turnCheck;
     [SerializeField] bool movingCheck;
     //그외
@@ -75,15 +88,37 @@ public class PlayerController : MonoBehaviour
         {
             moveValue = 1;
             StartCoroutine(TriggerMoving());
+<<<<<<< HEAD
 
         }
         else if (Input.GetKeyDown(KeyCode.S) && movingCheck == false)
+=======
+            
+        }
+        else if(Input.GetKeyDown(KeyCode.S) && movingCheck == false)
+>>>>>>> e36daf3a49948442707dca65309dd12e2dfa8b69
         {
             moveValue = -1;
             StartCoroutine(TriggerMoving());
         }
     }
     IEnumerator TriggerMoving()
+<<<<<<< HEAD
+=======
+    {
+        movingCheck = true;
+        movingCount = 0.1f;
+        Vector3 moveDevelop = moveValue > 0 ? Vector3.forward : Vector3.back;
+        while (movingCount < moveDIrection)
+        {
+            transform.Translate(moveDevelop * movingCount * Time.deltaTime);
+            movingCount += 0.1f;
+            yield return null;
+        }
+        movingCheck = false;
+    }
+    void Jump()
+>>>>>>> e36daf3a49948442707dca65309dd12e2dfa8b69
     {
         movingCheck = true;
         movingCount = 0.1f;
@@ -182,6 +217,7 @@ public class PlayerController : MonoBehaviour
     {
         turnCheck = true;
         turnningCount = 0;
+<<<<<<< HEAD
         Vector3 turnDevelop = turnValue > 0 ? Vector3.right : Vector3.left;
         while (turnningCount < 90)
         {
@@ -208,6 +244,21 @@ public class PlayerController : MonoBehaviour
         //    Debug.Log(ground.transform.rotation.z);
         //    ground.transform.rotation = Quaternion.Euler(0, 0, -180);
         //}
+=======
+        float value = Mathf.Lerp(0, 90f, Time.deltaTime);
+        Vector3 turnDevelop = turnValue > 0 ? Vector3.forward : Vector3.back;
+        while (turnningCount < 90)
+        {
+            ground.transform.RotateAround(gameObject.transform.position, turnDevelop, value);
+            turnningCount += value;
+            if (ground.transform.rotation.z % 90 == 0)
+            {
+                break;
+            }
+            yield return null;
+        }
+
+>>>>>>> e36daf3a49948442707dca65309dd12e2dfa8b69
         turnCheck = false;
     }
     void PlayerRot()
