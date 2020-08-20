@@ -11,7 +11,7 @@ public class TextController : MonoBehaviour
 
 	void Start()
 	{
-		txt = GetComponent<Text>();
+		txt = txt.GetComponent<Text>();
 		story = txt.text;
 		txt.text = "";
 		
@@ -23,9 +23,8 @@ public class TextController : MonoBehaviour
 		foreach (char c in story)
 		{
 			txt.text += c;
-			yield return new WaitForSeconds(0.125f);
+			yield return new WaitForSeconds(0.2f);
 		}
-		SceneManager.LoadScene(1);
 	}
 
 }
