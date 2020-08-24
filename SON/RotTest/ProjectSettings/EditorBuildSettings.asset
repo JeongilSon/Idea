@@ -14,4 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LastScene.unity
     guid: 774610703faf73b409d523cea434810b
-  m_configObjects: {}
+  m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4942cf9ad52e6634c95032ead64e86f5,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: f269f2f073bb2c84f8adf03c1282f4dd,
+      type: 2}
