@@ -59,9 +59,9 @@ public class GameManager : MonoBehaviour
 				SoundManager.instance.KeyboardSingle(null);
 			}
         }
-		if(PlayerController.clearCheck == true)
+		if(Player.clearCheck == true)
         {
-			PlayerController.roundCount++;
+			Player.roundCount++;
 			clearStageUI.SetActive(true);
         }		
 		
@@ -69,8 +69,8 @@ public class GameManager : MonoBehaviour
 	public void NextStageButton()
     {
 		SceneManager.LoadScene(2);
-		//if(PlayerController.roundCount < 3)
+		//if(Player.roundCount < 3)
 		clearStageUI.SetActive(false);
-		//PlayerController.clearCheck = false;
+		//Player.clearCheck = false;
     }
 }
