@@ -9,22 +9,25 @@ public class gravity : MonoBehaviour
     [SerializeField] bool isGround;
     [SerializeField] bool movingCheck;
     [SerializeField] bool turnCheck;
-    public static bool clearCheck; 
+
+    public static bool clearCheck;
 
     //움직임 및 동작 제어
     int turnValue = 0;
     int turnningCount;
-    
+    int moveDirection = 40;
+    int moveCount;
+    int moveValue;
+
     //이동 시 속도나 물리제어
     [SerializeField] int gravityScale = 1;
     int speed = 2;
-    [SerializeField] float moveDIrection = 5f;
 
     //플레이어의 마지막 이동
     [SerializeField] Vector3 moveDir;
 
     //사운드
-    public AudioClip gravityRightSource, gravityLeftSource,groundedSource, clearPointSource;
+    public AudioClip gravityRightSource, gravityLeftSource, groundedSource, clearPointSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,32 +49,48 @@ public class gravity : MonoBehaviour
     }
     public void PlayerMoving()
     {
-        #region NoneVR
-        //moveDir.x = Input.GetAxis("Horizontal");
-        moveDir.z = Input.GetAxis("Vertical");
-        #endregion
-
-        #region VR
-        //float dirX = 0; // 좌우
-        float dirZ = 0; // 전진후진
-        if (OVRInput.Get(OVRInput.Touch.PrimaryThumbstick))
+        if (movingCheck == false)
         {
-            Vector2 coord = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
-            if (coord.y > 0)
-                dirZ = +1;
-            //아래
-            else if (coord.y < 0)
-                dirZ = -1;
-            else
-                dirZ = 0;
-            //}
+            if (Input.GetKeyDown(KeyCode.W) || OVRInput.GetDown(OVRInput.Button.PrimaryThumbstickUp))
+            {
+                moveValue = 1;
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryThumbstickUp))
+                {
+                    moveValue = 1;
+                }
+                StartCoroutine(SmoothMoving());
+            }
+            else if (Input.GetKeyDown(KeyCode.S) || OVRInput.GetDown(OVRInput.Button.PrimaryThumbstickDown))
+            {
+                moveValue = -1;
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryThumbstickDown))
+                {
+                    moveValue = -1;
+                }
+                StartCoroutine(SmoothMoving());
+            }
+            else moveValue = 0;
+
         }
-        //moveDir.z = dirZ;
-        #endregion
+
         if (!Physics.Raycast(transform.position, transform.up * -1f, 1f, 1 << LayerMask.NameToLayer("Ground")) && turnCheck == false)
         {
             isGround = false;
         }
+    }
+    IEnumerator SmoothMoving()
+    {
+        movingCheck = true;
+        moveCount = 0;
+        float moveDevelop = moveValue > 0 ? 1 : -1;
+        while (moveCount < moveDirection)
+        {
+            moveDir.z = moveDevelop;
+            moveCount += 1;
+            yield return null;
+        }
+        movingCheck = false;
+        moveDir.z = 0;
     }
     public void CameraMoving()
     {

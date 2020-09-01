@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 	public AudioClip keyboardSource;
 	public VideoClip cizLogo, ideaLogo;
 	public VideoClip outro;
+	public GameObject key;
 	public int stageCount = 0;
 	public bool textScene;
 	string story = "";
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviour
 		if (stageCount == 0) // 첫 시작 씬
 		{
 			VideoManager.instance.VIdeoSIngle(cizLogo);
-			yield return new WaitForSeconds(2f);
+			yield return new WaitForSeconds(4f);
 			VideoManager.instance.VIdeoSIngle(ideaLogo);
 			yield return new WaitForSeconds(2f);
 			VideoManager.instance.player.clip = null;
@@ -62,11 +63,11 @@ public class GameManager : MonoBehaviour
 			gravity.clearCheck = false;
 		}
 		else if (gravity.clearCheck == true && stageCount == 3)
-			SceneManager.LoadScene("LastScene"); 
-		if (textScene && Input.GetKeyDown(KeyCode.Space) || OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
+			SceneManager.LoadScene("LastScene");
+		if (textScene && Input.GetKeyDown(KeyCode.Space) || OVRInput.GetDown(OVRInput.RawButton.B))
 		{
 			textScene = false;
-			if(stageCount == 0)
+			if (stageCount == 0)
 				stageCount++;
 			StopAllCoroutines();
 			SoundManager.instance.StopKeyboard();
@@ -110,6 +111,10 @@ public class GameManager : MonoBehaviour
 				txt.text += c;
 				yield return new WaitForSeconds(0.13f);
 			}
+		}
+		if (stageCount == 0)
+		{
+			key.SetActive(true);
 		}
 		story = "";
 		//textScene = false;
