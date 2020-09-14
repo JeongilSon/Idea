@@ -121,7 +121,7 @@ MonoBehaviour:
   m_MinSize: {x: 881, y: 492}
   m_MaxSize: {x: 16006, y: 14042}
   vertical: 1
-  controlID: 81
+  controlID: 146
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_MinSize: {x: 881, y: 492}
   m_MaxSize: {x: 16006, y: 14042}
   vertical: 0
-  controlID: 82
+  controlID: 147
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_MinSize: {x: 605, y: 492}
   m_MaxSize: {x: 12005, y: 14042}
   vertical: 1
-  controlID: 83
+  controlID: 148
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_MinSize: {x: 605, y: 221}
   m_MaxSize: {x: 12005, y: 4021}
   vertical: 0
-  controlID: 84
+  controlID: 149
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -454,7 +454,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 5cfbffff
+      m_ExpandedIDs: 40ebffff385800008c580000da5800009c590000c4590000ee590000f8590000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -532,7 +532,7 @@ MonoBehaviour:
   m_ShowContextualTools: 0
   m_WindowGUID: 519954b7972207142816e41e63323b47
   m_Gizmos: 1
-  m_OverrideSceneCullingMask: 6917529027641081856
+  m_OverrideSceneCullingMask: 0
   m_SceneIsLit: 1
   m_SceneLighting: 1
   m_2DMode: 0
@@ -540,9 +540,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.02395463, y: -0.7967404, z: -12.783822}
+    m_Target: {x: 0.83479273, y: -0.008365989, z: -11.645796}
     speed: 2
-    m_Value: {x: 0.02395463, y: -0.7967404, z: -12.783822}
+    m_Value: {x: 0.83479273, y: -0.008365989, z: -11.645796}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -554,7 +554,7 @@ MonoBehaviour:
   m_SceneViewState:
     showFog: 1
     showMaterialUpdate: 0
-    showSkybox: 1
+    showSkybox: 0
     showFlares: 1
     showImageEffects: 1
     showParticleSystems: 1
@@ -589,13 +589,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.24054721, y: -0.3549635, z: 0.09504826, w: 0.8984709}
+    m_Target: {x: 0.03760449, y: -0.88361466, z: 0.0719864, w: 0.46129522}
     speed: 2
-    m_Value: {x: 0.24024342, y: -0.35763118, z: 0.09576248, w: 0.89733636}
+    m_Value: {x: 0.035525907, y: -0.8838571, z: 0.06800355, w: 0.46142182}
   m_Size:
-    m_Target: 5.779644
+    m_Target: 2.3835936
     speed: 2
-    m_Value: 6.0519834
+    m_Value: 2.3835936
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -749,21 +749,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes/MainScene
+    - Assets/Prefabs/Edit/Cube/Level
     m_Globs: []
   m_ViewMode: 1
   m_StartGridSize: 78
   m_LastFolders:
-  - Assets/Scenes/MainScene
+  - Assets/Prefabs/Edit/Cube/Level
   m_LastFoldersGridSize: 78
   m_LastProjectPath: C:\Users\USER\Documents\GitHub\Idea\KSJ\CIz
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 75}
-    m_SelectedIDs: b8540000
-    m_LastClickedID: 21688
-    m_ExpandedIDs: 000000005e5400006054000062540000b454000000ca9a3b
+    scrollPos: {x: 0, y: 46}
+    m_SelectedIDs: 92540000
+    m_LastClickedID: 21650
+    m_ExpandedIDs: 000000005e54000060540000625400007a54000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -818,7 +818,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300009a4a0000904a0000f6350000543c0000443b00007a3f000090410000d03d00002a42000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
